@@ -1,0 +1,14 @@
+@import "../../colors.scss";
+.nav{
+    height: 100%;
+    background-color: $darkViolet;
+}
+.nav-link{
+    color: $rosy;
+    &:hover{
+        color:white;
+    }
+}
+.active{
+    color: white;
+}
