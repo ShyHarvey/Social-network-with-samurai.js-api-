@@ -3,11 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-import './main.scss'
-function Main() {
+import Posts from "../posts/posts";
+import './profile.scss';
+function Profile() {
     return (
-        <div>
-            <div className="profileHead mt-3">
+        <div className="profile p-3">
+            <div className="profileHead">
                 <img className="profileImg" src="https://wallpaperaccess.com/full/4958552.jpg" alt="background" />
             </div>
             <Container fluid className="mt-3">
@@ -24,10 +25,10 @@ function Main() {
                         </ListGroup>
                     </Col>
                 </Row>
-
             </Container>
+            <Posts/>
         </div>
     );
 }
 
-export default Main;
+export default Profile;
