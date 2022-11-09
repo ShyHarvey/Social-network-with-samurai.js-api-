@@ -1,4 +1,5 @@
 import React from "react";
+import Badge from 'react-bootstrap/Badge';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/esm/Container';
@@ -18,10 +19,9 @@ function Post(props){
                 <p className={styles.text}>{props.message}</p>
             </Col>
         </Row>
-        <Container className="d-flex p-0 mt-1">
-        <Button className="me-2" variant="outline-primary">Like</Button>            
-                <span>{props.likesCount}</span>
-        </Container>
+        <Button className="me-2" variant="primary">Like 
+        <Badge bg="secondary">{props.likesCount}</Badge>
+        </Button> 
     </Container>
 </ListGroup.Item>
     )

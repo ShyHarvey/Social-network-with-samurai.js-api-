@@ -1,6 +1,16 @@
 @import "../../../colors.scss";
 
-.dialogs{
-padding: 1rem;
-background-color: $rosy;
+.dialogs {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    background-color: $rosy;
+    &Item:first-child{
+        flex-basis: 30%;
+    }
+}
+.listItem{
+    background-color: $darkViolet;
 }

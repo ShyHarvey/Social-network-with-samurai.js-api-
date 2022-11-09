@@ -1,12 +1,41 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import styles from "./dialogs.module.scss";
+import DialogMessages from "./dialog/dialogMessages";
+import DialogLink from "./dialog/dialog_links/dialogLink";
 
-function Dialogs(){
+import {
+    // BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+
+
+function Dialogs() {
+    let dialogsData = [
+        { id:1 , name:"Dimych" },
+        { id:2 , name:"Andrey" },
+        { id:3 , name:"Sveta" },
+        { id:4 , name:"Sasha" },
+        { id:5 , name:"Viktor" },
+        { id:6 , name:"Valera" },];
+
+
+        let dialogLinks = dialogsData.map(item => <DialogLink id={item.id} name={item.name} />)
+        let dialogMessages = dialogsData.map(item => <Route path={`/${item.id}`} element={<DialogMessages friendName={item.name} />}></Route>)
+
+
     return (
-        <Container className={styles.dialogs}>
-            <p>dialogs</p>
+        <Container fluid className={`${styles.dialogs}`}>
+            <ListGroup className={styles.dialogsItem}>
+                <h2>Dialogs</h2>
+                {dialogLinks}
+            </ListGroup>
+            <Routes>
+                {dialogMessages}
+            </Routes>
         </Container>
     )
 }

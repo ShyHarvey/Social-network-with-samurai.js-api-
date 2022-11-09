@@ -9,7 +9,7 @@ function Profile() {
     return (
         <div className="profile p-3">
             <div className="profileHead">
-                <img className="profileImg" src="https://wallpaperaccess.com/full/4958552.jpg" alt="background" />
+                <img className="profileImg" src="https://s1.stc.all.kpcdn.net/putevoditel/projectid_406014/images/tild3064-6131-4666-a266-363837393031__960.jpg" alt="background" />
             </div>
             <Container fluid className="mt-3">
                 <Row>

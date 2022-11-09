@@ -7,6 +7,13 @@ import Form from 'react-bootstrap/Form';
 import "./posts.scss";
 
 function Posts() {
+    let postsData = [
+        {id:1, message:"Waaaazzaap bro", likesCount: 9},
+        {id:2, message:"Yo", likesCount: 0},
+        {id:3, message:"wtf bro", likesCount: "(_!_)"},
+    ]
+
+    let postItems = postsData.map(item => <Post message = {item.message} likesCount={item.likesCount} />)
     return (
         <Container fluid className='mt-3'>
             <Form>
@@ -18,9 +25,7 @@ function Posts() {
                     <Button className='mb-3' variant='primary'>Add post</Button>
             </Form>
             <ListGroup className='postsSpace' variant="flush">
-                <Post message="Waaaazzaap bro" likesCount ='123'/>
-                <Post message="Yo"/>
-                <Post message="Wtf bro"/>
+                {postItems}
             </ListGroup>
         </Container>
     )
