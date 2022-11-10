@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../../posts/post/post';
+import Post from '../../profile/MyPosts/post/post';
 import Container from 'react-bootstrap/esm/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';

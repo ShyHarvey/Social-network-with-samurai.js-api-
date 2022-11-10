@@ -3,11 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Posts from "../posts/posts";
-import './profile.scss';
-function Profile() {
+import './profileInfo.scss';
+
+
+function ProfileInfo(){
     return (
-        <div className="profile p-3">
+        <Container fluid>
             <div className="profileHead">
                 <img className="profileImg" src="https://s1.stc.all.kpcdn.net/putevoditel/projectid_406014/images/tild3064-6131-4666-a266-363837393031__960.jpg" alt="background" />
             </div>
@@ -26,9 +27,9 @@ function Profile() {
                     </Col>
                 </Row>
             </Container>
-            <Posts/>
-        </div>
-    );
+        </Container>
+    )
 }
 
-export default Profile;
+
+export default ProfileInfo;

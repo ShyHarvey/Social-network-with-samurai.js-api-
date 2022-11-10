@@ -13,18 +13,18 @@ import {
 } from "react-router-dom";
 
 
-function Dialogs() {
-    let dialogsData = [
-        { id:1 , name:"Dimych" },
-        { id:2 , name:"Andrey" },
-        { id:3 , name:"Sveta" },
-        { id:4 , name:"Sasha" },
-        { id:5 , name:"Viktor" },
-        { id:6 , name:"Valera" },];
+function Dialogs(props) {
+    // let dialogsData = [
+    //     { id:1 , name:"Dimych" },
+    //     { id:2 , name:"Andrey" },
+    //     { id:3 , name:"Sveta" },
+    //     { id:4 , name:"Sasha" },
+    //     { id:5 , name:"Viktor" },
+    //     { id:6 , name:"Valera" },];
 
 
-        let dialogLinks = dialogsData.map(item => <DialogLink id={item.id} name={item.name} />)
-        let dialogMessages = dialogsData.map(item => <Route path={`/${item.id}`} element={<DialogMessages friendName={item.name} />}></Route>)
+        let dialogLinks = props.data.map(item => <DialogLink id={item.id} name={item.name} />)
+        let dialogMessages = props.data.map(item => <Route path={`/${item.id}`} element={<DialogMessages friendName={item.name} />}></Route>)
 
 
     return (
