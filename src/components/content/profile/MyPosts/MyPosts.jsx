@@ -5,20 +5,32 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./posts.scss";
+import { useRef } from 'react';
 
 function Posts(props) {
     
 
     let postItems = props.data.map(item => <Post message = {item.message} likesCount={item.likesCount} />)
+
+    let newPostElement = useRef(null);
+    
+    let onPostChange = () =>{
+        props.changeNewPostText(newPostElement.current.value)
+    };
+
+    let addPost = () =>{ 
+        props.addPost()
+    } ;
+
     return (
         <Container fluid className='mt-3'>
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Post's text</Form.Label>
-                    <Form.Control placeholder="Enter text"></Form.Control>
+                    <Form.Control ref={newPostElement} onChange={onPostChange} value={props.newPostText}></Form.Control>
                     <Form.Text className="text-muted">input</Form.Text>
                 </Form.Group>
-                    <Button className='mb-3' variant='primary'>Add post</Button>
+                    <Button onClick={addPost} className='mb-3' variant='primary'>Add post</Button>
             </Form>
             <ListGroup className='postsSpace' variant="flush">
                 {postItems}

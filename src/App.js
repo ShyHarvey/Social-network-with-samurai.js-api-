@@ -16,7 +16,7 @@ import "./app.scss";
 
 
 function App(props) {
-  return (
+return (
     <div className="App">
       <Router>
         <Header />
@@ -25,7 +25,7 @@ function App(props) {
           <div className="app-content-wrapper m-0 p-0">
               <Routes>
                 <Route path="/dialogs/*" element={<Dialogs data={props.data.dialogsData} />} />
-                <Route path="/" element={<Profile data={props.data.profileData} />} />
+                <Route path="/" element={<Profile changeNewPostText={props.changeNewPostText} addPost= {props.addPost} data={props.data.profileData} />} />
               </Routes>
           </div>
         </Container>
