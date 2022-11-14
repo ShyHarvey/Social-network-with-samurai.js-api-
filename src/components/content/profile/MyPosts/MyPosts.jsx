@@ -5,21 +5,21 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./posts.scss";
-import { useRef } from 'react';
+
+import{changeNewPostTextActionCreator,addPostActionCreator} from '../../../../redux/profileReducer';
 
 function Posts(props) {
     
+  
 
     let postItems = props.data.map(item => <Post message = {item.message} likesCount={item.likesCount} />)
-
-    let newPostElement = useRef(null);
     
-    let onPostChange = () =>{
-        props.changeNewPostText(newPostElement.current.value)
+    let onPostChange = (e) =>{
+        props.dispatch(changeNewPostTextActionCreator(e.target.value))
     };
 
     let addPost = () =>{ 
-        props.addPost()
+        props.dispatch(addPostActionCreator())
     } ;
 
     return (
@@ -27,7 +27,7 @@ function Posts(props) {
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Post's text</Form.Label>
-                    <Form.Control ref={newPostElement} onChange={onPostChange} value={props.newPostText}></Form.Control>
+                    <Form.Control onChange={onPostChange} value={props.newPostText}></Form.Control>
                     <Form.Text className="text-muted">input</Form.Text>
                 </Form.Group>
                     <Button onClick={addPost} className='mb-3' variant='primary'>Add post</Button>

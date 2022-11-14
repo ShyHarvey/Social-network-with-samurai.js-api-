@@ -24,8 +24,8 @@ return (
           <Navigation />
           <div className="app-content-wrapper m-0 p-0">
               <Routes>
-                <Route path="/dialogs/*" element={<Dialogs data={props.data.dialogsData} />} />
-                <Route path="/" element={<Profile changeNewPostText={props.changeNewPostText} addPost= {props.addPost} data={props.data.profileData} />} />
+                <Route path="/dialogs/*" element={<Dialogs data={props.data.dialogsData} dispatch={props.dispatch} />} />
+                <Route path="/" element={<Profile dispatch={props.dispatch} data={props.data.profileData} />} />
               </Routes>
           </div>
         </Container>

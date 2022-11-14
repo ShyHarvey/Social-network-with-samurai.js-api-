@@ -23,8 +23,8 @@ function Dialogs(props) {
     //     { id:6 , name:"Valera" },];
 
 
-        let dialogLinks = props.data.map(item => <DialogLink id={item.id} name={item.name} />)
-        let dialogMessages = props.data.map(item => <Route path={`/${item.id}`} element={<DialogMessages friendName={item.name} />}></Route>)
+        let dialogLinks = props.data.dialogsList.map(item => <DialogLink id={item.id} name={item.name} />)
+        let dialogMessages = props.data.dialogsList.map(item => <Route path={`/${item.id}`} element={<DialogMessages dispatch={props.dispatch} friendName={item.name} messagesData={props.data.messagesData} newMessageText={props.data.newMessageText} />}></Route>)
 
 
     return (
