@@ -5,13 +5,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./dialog.scss";
 
-import{addMessageActionCreator, changeMessageActionCreator} from '../../../../redux/dialogsReducer'
+
 function DialogMessages(props) {
 
     let messagesList = props.messagesData.map(item=> <Post message = {item.message} likesCount={item.likesCount}/>)
     
-    let addMessage = () => props.dispatch(addMessageActionCreator()) ;
-    let changeMessage = (e) => props.dispatch(changeMessageActionCreator(e.target.value))
+    let addMessage = () => props.addMessage();
+    let changeMessage = (e) => props.changeMessage(e.target.value)
     return (
         <Container fluid className='mt-3'>
             <h4>{props.friendName}</h4>

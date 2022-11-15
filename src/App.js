@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/header/header";
 import Navigation from "./components/nav/nav";
 import Profile from "./components/content/profile/profile";
-import Dialogs from "./components/content/dialogs/dialogs";
+import DialogsContainer from "./components/content/dialogs/dialogsContainer";
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,8 +24,8 @@ return (
           <Navigation />
           <div className="app-content-wrapper m-0 p-0">
               <Routes>
-                <Route path="/dialogs/*" element={<Dialogs data={props.data.dialogsData} dispatch={props.dispatch} />} />
-                <Route path="/" element={<Profile dispatch={props.dispatch} data={props.data.profileData} />} />
+                <Route path="/dialogs/*" element={<DialogsContainer data={props.data.dialogsReducer} dispatch={props.dispatch} />} />
+                <Route path="/" element={<Profile dispatch={props.dispatch} data={props.data.profileReducer} />} />
               </Routes>
           </div>
         </Container>

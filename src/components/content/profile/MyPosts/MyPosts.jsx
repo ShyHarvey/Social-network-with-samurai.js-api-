@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./posts.scss";
 
-import{changeNewPostTextActionCreator,addPostActionCreator} from '../../../../redux/profileReducer';
 
 function Posts(props) {
     
@@ -15,11 +14,11 @@ function Posts(props) {
     let postItems = props.data.map(item => <Post message = {item.message} likesCount={item.likesCount} />)
     
     let onPostChange = (e) =>{
-        props.dispatch(changeNewPostTextActionCreator(e.target.value))
+        props.onPostChange(e.target.value)
     };
 
     let addPost = () =>{ 
-        props.dispatch(addPostActionCreator())
+        props.addPost()
     } ;
 
     return (
