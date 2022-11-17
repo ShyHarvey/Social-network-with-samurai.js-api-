@@ -8,7 +8,7 @@ import "./dialog.scss";
 
 function DialogMessages(props) {
 
-    let messagesList = props.messagesData.map(item=> <Post message = {item.message} likesCount={item.likesCount}/>)
+    let messagesList = props.messagesData.map(item=> <Post message = {item.message} likesCount={item.likesCount} key={item.id}/>)
     
     let addMessage = () => props.addMessage();
     let changeMessage = (e) => props.changeMessage(e.target.value)

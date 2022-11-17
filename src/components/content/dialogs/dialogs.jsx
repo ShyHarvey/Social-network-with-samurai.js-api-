@@ -22,14 +22,15 @@ function Dialogs(props) {
     //     { id:6 , name:"Valera" },];
 
 
-    let dialogLinks = props.data.dialogsList.map(item => <DialogLink id={item.id} name={item.name} />)
-    let dialogMessages = props.data.dialogsList.map(item => <Route path={`/${item.id}`}
+    let dialogLinks = props.data.dialogsList.map(item => <DialogLink id={item.id} name={item.name} key={item.id} />)
+    let dialogMessages = props.data.dialogsList.map(item => <Route path={`/${item.id}`} key={item.id}
         element={<DialogMessages
             addMessage={props.addMessage}
             changeMessage={props.changeMessage}
             friendName={item.name}
             messagesData={props.data.messagesData}
-            newMessageText={props.data.newMessageText} />
+            newMessageText={props.data.newMessageText} 
+            />
         }></Route>)
 
 

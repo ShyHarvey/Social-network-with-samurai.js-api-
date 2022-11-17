@@ -1,0 +1,11 @@
+@import "../../../colors.scss";
+
+.users{
+    background-color: $rosy;
+    height: 100vh;
+}
+.usersGroup{
+    overflow-y: scroll;
+    max-height: 700px;
+    max-width: fit-content;
+}

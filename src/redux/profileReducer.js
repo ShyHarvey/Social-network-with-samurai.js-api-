@@ -10,18 +10,27 @@ let initialState = {
     newPostText: "fixed post text"
 };
 
+
+
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
-            state.postsData.push({
-                id: 4, message: state.newPostText, likesCount: 0
-            })
-            state.newPostText = '';
-            return state;
-        case CHANGE_NEW_POST_TEXT:
-            state.newPostText = action.text;
-            console.log(action.text);
-            return state;
+        case ADD_POST: 
+            return {
+                ...state,
+                postsData: [
+                    ...state.postsData,
+                    { id: 4, message: state.newPostText, likesCount: 0 }
+                ],
+                newPostText: '',
+            }
+
+        case CHANGE_NEW_POST_TEXT: 
+            return {
+                ...state,
+                newPostText:action.text
+            }
+
+        
         default:
             return state;
     }

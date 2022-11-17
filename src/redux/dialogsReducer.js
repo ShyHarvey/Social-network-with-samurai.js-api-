@@ -1,4 +1,4 @@
-let initialState ={
+let initialState = {
     dialogsList: [
         { id: 1, name: "Dimych" },
         { id: 2, name: "Andrey" },
@@ -13,26 +13,32 @@ let initialState ={
     ],
     newMessageText: "fixed message text"
 };
-const dialogsReducer = (state= initialState, action) => {
 
 
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD-MESSAGE":
-            state.messagesData.push({
-                id: 4, message: state.newMessageText, likesCount: 0
-            })
-            state.newMessageText = '';
-            return state;
+            return {
+                ...state,
+                messagesData: [
+                    ...state.messagesData,
+                    { id: 4, message: state.newMessageText, likesCount: 0 }
+                ],
+                newMessageText: '',
+            }
         case "CHANGE-MESSAGE":
-            state.newMessageText = action.text;  
-            console.log(action.text)
+            return {
+                ...state,
+                newMessageText: action.text
+            }
+
+        default:
             return state;
-        default: return state;
     }
 }
 
 
-export const addMessageActionCreator = () => ({type: "ADD-MESSAGE"});
-export const changeMessageActionCreator = (text) => ({type: "CHANGE-MESSAGE", text: text,})
+export const addMessageActionCreator = () => ({ type: "ADD-MESSAGE" });
+export const changeMessageActionCreator = (text) => ({ type: "CHANGE-MESSAGE", text: text, })
 
 export default dialogsReducer;

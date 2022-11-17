@@ -4,14 +4,13 @@ import Container from 'react-bootstrap/esm/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+
 import "./posts.scss";
 
 
 function Posts(props) {
-    
-  
 
-    let postItems = props.data.map(item => <Post message = {item.message} likesCount={item.likesCount} />)
+    let postItems = props.data.map(item => <Post message = {item.message} likesCount={item.likesCount} key={item.id} />)
     
     let onPostChange = (e) =>{
         props.onPostChange(e.target.value)
