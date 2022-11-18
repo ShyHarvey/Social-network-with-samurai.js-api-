@@ -6,7 +6,6 @@ import styles from "./user.module.scss";
 import userPhoto from "../../../../assets/user.png"
 
 function User(props){
-
     return(
 <ListGroup.Item className={styles.post}>
     <Container className={styles.item} fluid>

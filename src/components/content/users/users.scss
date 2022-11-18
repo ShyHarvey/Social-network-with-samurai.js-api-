@@ -2,10 +2,11 @@
 
 .users{
     background-color: $rosy;
-    height: 100vh;
+    min-height: calc(100vh - 56px);
 }
 .usersGroup{
     overflow-y: scroll;
+    min-height: 600px;
     max-height: 700px;
     max-width: fit-content;
 }
