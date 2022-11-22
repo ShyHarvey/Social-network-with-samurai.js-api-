@@ -3,26 +3,36 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Spinner from "react-bootstrap/esm/Spinner";
 import './profileInfo.scss';
 
 
-function ProfileInfo(){
+function ProfileInfo(props) {
+
+
+    if (props.profile === null) {
+        return <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>
+    }
     return (
         <Container fluid>
             <div className="profileHead">
-                <img className="profileImg" src="https://s1.stc.all.kpcdn.net/putevoditel/projectid_406014/images/tild3064-6131-4666-a266-363837393031__960.jpg" alt="background" />
+                <img className="profileImg" src="https://www.gastronom.ru/binfiles/images/20150706/bc855150.jpg" alt="wallpaper" />
             </div>
             <Container fluid className="mt-3">
+                <h3>{props.profile.fullName}</h3>
                 <Row>
                     <Col xs={2} className="ava p-0">
-                    <img className="profileImg" src="https://upload.wikimedia.org/wikipedia/ru/thumb/9/94/%D0%93%D0%B8%D0%B3%D0%B0%D1%87%D0%B0%D0%B4.jpg/250px-%D0%93%D0%B8%D0%B3%D0%B0%D1%87%D0%B0%D0%B4.jpg" alt="background" />
+                        <img className="profileImg" src={props.profile.photos.large ? props.profile.photos.large
+                             : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'} alt="profile mage" />
                     </Col>
                     <Col className="info">
                         <ListGroup>
-                            <ListGroup.Item>Date of birth</ListGroup.Item>
-                            <ListGroup.Item>City: Minsk</ListGroup.Item>
-                            <ListGroup.Item>education</ListGroup.Item>
-                            <ListGroup.Item>Web cite</ListGroup.Item>
+                            <ListGroup.Item>About: <strong>{props.profile.aboutMe}</strong></ListGroup.Item>
+                            <ListGroup.Item>vk:  <a href={props.profile.contacts.vk} rel="noreferrer" target="_blank">{props.profile.contacts.vk}</a></ListGroup.Item>
+                            <ListGroup.Item>instagram: {props.profile.contacts.instagram}</ListGroup.Item>
+                            <ListGroup.Item>github: {props.profile.contacts.github}</ListGroup.Item>
                         </ListGroup>
                     </Col>
                 </Row>
@@ -30,6 +40,7 @@ function ProfileInfo(){
         </Container>
     )
 }
+
 
 
 export default ProfileInfo;

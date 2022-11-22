@@ -26,7 +26,7 @@ return (
           <div className="app-content-wrapper m-0 p-0">
               <Routes>
                 <Route path="/dialogs/*" element={<DialogsContainer />} />
-                <Route path="/" element={<Profile />} />
+                <Route path="/profile/:id" element={<Profile />} />
                 <Route path="/users" element={<UsersContainer />} />
               </Routes>
           </div>

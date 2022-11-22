@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { followAC, unfollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC } from "../../../redux/usersReducer";
-import Users from "./users";
+import { followAC, unfollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC } from "../../../redux/usersReducer";
+import UsersQuery from "./usersQuery";
 
 
 
@@ -15,9 +15,11 @@ function UsersContainer() {
     let setUsers = (user) => dispatch(setUsersAC(user));
     let setCurrentPage = (number) => dispatch(setCurrentPageAC(number));
     let setTotalUsersCount = (count) => dispatch(setTotalUsersCountAC(count));
+    let toggleIsFetching = (boolean) => dispatch(toggleIsFetchingAC(boolean));
     return (
-        <Users
+        <UsersQuery
             users={usersState.users}
+            isFetching={usersState.isFetching}
             currentPage={usersState.currentPage}
             pageSize={usersState.pageSize}
             totalUsersCount={usersState.totalUsersCount}
@@ -25,7 +27,9 @@ function UsersContainer() {
             follow={follow}
             unfollow={unfollow}
             setUsers={setUsers}
-            setTotalUsersCount={setTotalUsersCount} />
+            setTotalUsersCount={setTotalUsersCount} 
+            toggleIsFetching = {toggleIsFetching}
+            />
     )
 }
 
