@@ -5,10 +5,9 @@ import Button from 'react-bootstrap/Button';
 import { NavLink } from "react-router-dom";
 import styles from "./user.module.scss";
 import userPhoto from "../../../../assets/user.png"
-import { usersAPI } from "../../../../api/api";
 
 function User(props) {
-    
+
     return (
         <ListGroup.Item className={styles.post}>
             <Container className={styles.item} fluid>
@@ -26,26 +25,14 @@ function User(props) {
                     </div>
                 </Container>
                 {props.data.followed ?
-                    <Button disabled={props.isFollowingInProgress.some( id => id === props.data.id)} onClick={() => {
-                        props.followingInProgress(true, props.data.id)
-                        usersAPI.unfollow(props.data.id)
-                            .then((data) => {
-                                if (data.resultCode === 0) {
-                                    props.unfollow(props.data.id)
-                                    props.followingInProgress(false, props.data.id)
-                                }
-                            })
-                    }} >  Unfollow</Button>
-                    : <Button disabled={props.isFollowingInProgress.some( id => id === props.data.id)}  onClick={() => {
-                        props.followingInProgress(true, props.data.id)
-                        usersAPI.follow(props.data.id)
-                            .then((data) => {
-                                if (data.resultCode === 0) {
-                                    props.follow(props.data.id)
-                                }
-                                props.followingInProgress(false, props.data.id)
-                            });
-                    }} > Follow</Button>
+                    <Button disabled={props.isFollowingInProgress.some(id => id === props.data.id)}
+                        onClick={() => { props.unfollow(props.data.id) }}>
+                        Unfollow
+                    </Button>
+                    : <Button disabled={props.isFollowingInProgress.some(id => id === props.data.id)}
+                        onClick={() => { props.follow(props.data.id) }} >
+                        Follow
+                    </Button>
                 }
             </Container>
         </ListGroup.Item>

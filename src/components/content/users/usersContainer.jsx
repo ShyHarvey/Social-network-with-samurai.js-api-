@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { followAC, unfollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC, toggleIsFetchingAC, followingInProgressAC } from "../../../redux/usersReducer";
+import { followingInProgressAC, getUsers, setPage, follow, unfollow } from "../../../redux/usersReducer";
 import UsersQuery from "./usersQuery";
 
 
@@ -10,13 +10,11 @@ function UsersContainer() {
     const usersState = useSelector(state => state.usersReducer);
     const dispatch = useDispatch();
 
-    let follow = (userID) => dispatch(followAC(userID));
-    let unfollow = (userID) => dispatch(unfollowAC(userID));
-    let setUsers = (user) => dispatch(setUsersAC(user));
-    let setCurrentPage = (number) => dispatch(setCurrentPageAC(number));
-    let setTotalUsersCount = (count) => dispatch(setTotalUsersCountAC(count));
-    let toggleIsFetching = (boolean) => dispatch(toggleIsFetchingAC(boolean));
+    let followThunk = (userID) => dispatch(follow(userID));
+    let unfollowThunk = (userID) => dispatch(unfollow(userID));
     let followingInProgress = (boolean, id) => dispatch(followingInProgressAC(boolean, id));
+    let getUsersThunk = (currentPage, pageSize) => dispatch(getUsers(currentPage, pageSize));
+    let setPageThunk = (currentPage, pageSize) => dispatch(setPage(currentPage, pageSize));
     return (
         <UsersQuery
             users={usersState.users}
@@ -25,14 +23,12 @@ function UsersContainer() {
             currentPage={usersState.currentPage}
             pageSize={usersState.pageSize}
             totalUsersCount={usersState.totalUsersCount}
-            setPage={setCurrentPage}
-            follow={follow}
-            unfollow={unfollow}
-            setUsers={setUsers}
-            setTotalUsersCount={setTotalUsersCount} 
-            toggleIsFetching = {toggleIsFetching}
-            followingInProgress= {followingInProgress}
-            />
+            follow={followThunk}
+            unfollow={unfollowThunk}
+            followingInProgress={followingInProgress}
+            getUsersThunk={getUsersThunk}
+            setPageThunk={setPageThunk}
+        />
     )
 }
 

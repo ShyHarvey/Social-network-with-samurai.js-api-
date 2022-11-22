@@ -2,7 +2,6 @@ import React from "react";
 import User from "./user/user";
 import Container from "react-bootstrap/esm/Container";
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from "react-bootstrap/esm/Button";
 import Pagination from "react-bootstrap/Pagination"
 import Spinner from 'react-bootstrap/Spinner';
 import "./users.scss"
@@ -42,7 +41,6 @@ function Users(props) {
                     <Pagination.Item onClick={() => props.setPage(pagesCount)}>{pagesCount}</Pagination.Item>
                     <Pagination.Next onClick={() => props.setPage(props.currentPage + 1)} />
                 </Pagination>
-                <Button className="mt-3" onClick={props.getUsers}>Get Users</Button>
             </Container>
         )
     }

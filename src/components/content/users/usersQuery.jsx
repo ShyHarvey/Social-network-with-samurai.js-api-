@@ -1,36 +1,15 @@
 import React from "react";
 import "./users.scss";
 import Users from "./users";
-import {usersAPI} from "../../../api/api";
 
 
 class UsersQuery extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsersMount(this.props.currentPage, this.props.pageSize)
-        .then((data) => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(data.totalCount)
-        })
-    }
-    getUsers = () => {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers()
-        .then((data) => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        });
+        this.props.getUsersThunk(this.props.currentPage, this.props.pageSize)
     }
     setPage = (number) => {
-        this.props.toggleIsFetching(true)
-        this.props.setPage(number);
-        usersAPI.setPage(number, this.props.pageSize)
-        .then((data) => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        })
+        this.props.setPageThunk(number, this.props.pageSize)
     }
     render() {
         return (

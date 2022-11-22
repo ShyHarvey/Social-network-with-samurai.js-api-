@@ -1,8 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserDataAC } from "../../redux/authReducer";
-import { authAPI } from "../../api/api";
+import { getUserData } from "../../redux/authReducer";
 
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -14,15 +13,9 @@ function Header() {
   const authState = useSelector(state => state.authReducer);
   const dispatch = useDispatch();
 
-  let setUserProfile = (userData) => dispatch(setUserDataAC(userData));
   useEffect(() => {
-      authAPI.getUserData()
-          .then((data) => {
-            if(data.resultCode === 0){
-              setUserProfile(data.data)
-            }
-          })
-  }, [])
+    dispatch(getUserData())
+  }, [dispatch])
 
   return (
     <Navbar bg="dark">
