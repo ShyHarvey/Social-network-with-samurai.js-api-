@@ -1,62 +1,37 @@
 import React from "react";
-import axios from 'axios'
-import "./users.scss"
+import "./users.scss";
 import Users from "./users";
+import {usersAPI} from "../../../api/api";
 
 
-//ФУНКЦИОНАЛЬНАЯ ВЕРСИЯ
-
-// function Users(props) {
-//     let getUsers = () => {
-//         axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
-//             props.setUsers(response.data.items)
-//         })
-// }
-
-//     let users = props.users.map(item => <User data={item} follow={props.follow} unfollow = {props.unfollow} key={item.id} />)
-//     return (
-//         < Container fluid className="users" >
-//             <h2>Users</h2>
-//             <ListGroup className="usersGroup">
-//                 {users}
-//             </ListGroup>
-//             <Button className="mt-3" onClick={getUsers}>Get Users</Button>
-//         </Container>
-//     )
-// }
-
-
-
-// КЛАССОВАЯ ВЕРСИЯ
 class UsersQuery extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-        .then((response) => {
+        usersAPI.getUsersMount(this.props.currentPage, this.props.pageSize)
+        .then((data) => {
             this.props.toggleIsFetching(false)
-            this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.setUsers(data.items)
+            this.props.setTotalUsersCount(data.totalCount)
         })
     }
     getUsers = () => {
         this.props.toggleIsFetching(true)
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-        .then((response) => {
+        usersAPI.getUsers()
+        .then((data) => {
             this.props.toggleIsFetching(false)
-            this.props.setUsers(response.data.items)
+            this.props.setUsers(data.items)
         });
     }
     setPage = (number) => {
         this.props.toggleIsFetching(true)
         this.props.setPage(number);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${number}&count=${this.props.pageSize}`)
-        .then((response) => {
+        usersAPI.setPage(number, this.props.pageSize)
+        .then((data) => {
             this.props.toggleIsFetching(false)
-            this.props.setUsers(response.data.items)
+            this.props.setUsers(data.items)
         })
     }
-
     render() {
         return (
             <Users
@@ -69,6 +44,8 @@ class UsersQuery extends React.Component {
             follow={this.props.follow}
             unfollow={this.props.unfollow}
             isFetching={this.props.isFetching}
+            isFollowingInProgress={this.props.isFollowingInProgress}
+            followingInProgress={this.props.followingInProgress}
             />
         )
     }

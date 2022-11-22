@@ -11,21 +11,14 @@ import "./users.scss"
 function Users(props) {
 
         let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-        console.log(props.pageSize)
-        console.log(props.totalUsersCount)
-        // let items = [];
-        // for (let number = 1; number <= pagesCount; number++) {
-        //     items.push(
-        //         <Pagination.Item onClick={() => props.setPage(number)} key={number} active={number === props.currentPage}>
-        //             {number}
-        //         </Pagination.Item>,
-        //     );
-        // }
         let users = props.users.map(item => <User
             data={item}
             follow={props.follow}
             unfollow={props.unfollow}
             key={item.id}
+            followingInProgress={props.followingInProgress}
+            isFollowingInProgress={props.isFollowingInProgress}
+
         />)
         return (
             < Container fluid className="users" >

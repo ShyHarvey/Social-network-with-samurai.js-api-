@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { setUserDataAC } from "../../redux/authReducer";
+import { authAPI } from "../../api/api";
 
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -16,17 +16,13 @@ function Header() {
 
   let setUserProfile = (userData) => dispatch(setUserDataAC(userData));
   useEffect(() => {
-      axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-        withCredentials: true,
-      })
-          .then((response) => {
-            if(response.data.resultCode === 0){
-              setUserProfile(response.data.data)
+      authAPI.getUserData()
+          .then((data) => {
+            if(data.resultCode === 0){
+              setUserProfile(data.data)
             }
           })
   }, [])
-
-  console.log(authState)
 
   return (
     <Navbar bg="dark">

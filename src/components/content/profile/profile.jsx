@@ -5,7 +5,7 @@ import './profile.scss';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserProfileAC } from "../../../redux/profileReducer";
-import axios from "axios";
+import { profileAPI } from "../../../api/api";
 import { useParams } from "react-router-dom";
 
 
@@ -18,9 +18,9 @@ function Profile(props) {
     let setUserProfile = (profile) => dispatch(setUserProfileAC(profile));
     let { id } = useParams()
     useEffect(() => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${id}`)
-            .then((response) => {
-                    setUserProfile(response.data)
+        profileAPI.getProfileById(id)
+            .then((data) => {
+                    setUserProfile(data)
             })
     }, [id])
 
