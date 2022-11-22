@@ -19,15 +19,10 @@
 * ReactJS 18
 * Redux
 * React - Redux 
+* React - Bootstrap
 * Redux Thunk
-* React Final Form
 * React Router v6
 * Axios + Fetch
 * React Hooks
-* Prettier
 * Eslint
 * CSS-Modules 
-* React Content Loader (created by me component \<Preloader/>)
-* React Pagination
-* Lazy Loading (React.lazy() and Suspense)
-* React Testing Library and Jest
