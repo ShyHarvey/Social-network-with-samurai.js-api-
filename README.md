@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Social network written in React and using the [free version of SamuraiJs api](https://social-network.samuraijs.com/docs)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## account for testing:
 
-## Available Scripts
+## Information:
+* I used free version of api so you can use only only 20 post/put/delete requests per hour.
+* If the deployed site does not open, use vpn
+* I used the free version of the api so here is what you can do by going to the site:
+  * Login or Register, every ten login attempts you will see a captcha that needs to be solved. You can select the option: remember me and then for some time you will not need to go through authorization. Also, you can always log out.
+  * On the left side of the header there is a help button by clicking on which you can always read detailed information about the site's capabilities.
+  * IMPORTANT: the free version of the api does not allow you to work with posts or messages, so they are stored only in BLL.
+  * On the profile page, you can change your name, profile picture (there is a validation of the extension and file size), description, your links (there is a validation too),  job search status and message to it. And you can also change the message that will be visible to everyone in the list of users. Posts are saved only in BLL =)
+  * The message page simulates the ability to switch between chats and write to different people, but the work is limited to BLL. Again =)
+  * On the Users page, their page-by-page output is implemented. You can click on a user's avatar to go to their profile.
+* 429 http status means that the number of allowed post\put\delete requests per hour has been exceeded and you need to wait a bit, this is a limitation for free use of the api.
 
-In the project directory, you can run:
+## Technologies that I used:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* ReactJS 18
+* Redux
+* React - Redux 
+* Redux Thunk
+* React Final Form
+* React Router v6
+* Axios + Fetch
+* React Hooks
+* Prettier
+* Eslint
+* CSS-Modules 
+* React Content Loader (created by me component \<Preloader/>)
+* React Pagination
+* Lazy Loading (React.lazy() and Suspense)
+* React Testing Library and Jest
