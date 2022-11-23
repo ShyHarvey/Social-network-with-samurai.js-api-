@@ -39,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
-            case SET_STATUS:
+        case SET_STATUS:
             return {
                 ...state,
                 status: action.status
@@ -61,8 +61,12 @@ export const setStatusAC = (status) => ({ type: SET_STATUS, status });
 export const getProfile = (id) => {
     return (dispatch) => {
         profileAPI.getProfileById(id)
-            .then((data) => {
-                dispatch(setUserProfileAC(data))
+            .then((response) => {
+                profileAPI.getStatusById(id)
+                    .then((data) => {
+                        dispatch(setStatusAC(data))
+                        dispatch(setUserProfileAC(response))
+                    })
             })
     }
 }
@@ -78,8 +82,8 @@ export const updateStatus = (status) => {
     return (dispatch) => {
         profileAPI.updateStatus(status)
             .then((response) => {
-                if(response.data.resultCode === 0){
-                dispatch(setStatusAC(status))
+                if (response.resultCode === 0) {
+                    dispatch(setStatusAC(status))
                 }
             })
     }

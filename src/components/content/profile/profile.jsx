@@ -5,6 +5,7 @@ import './profile.scss';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile, setStatus, updateStatus } from "../../../redux/profileReducer";
+// eslint-disable-next-line no-unused-vars
 import { useParams, Navigate } from "react-router-dom";
 
 
@@ -12,9 +13,9 @@ import { useParams, Navigate } from "react-router-dom";
 function Profile(props) {
 
     const profileState = useSelector(state => state.profileReducer);
-    const isAuth = useSelector(state => state.authReducer.isAuth);
+    // const isAuth = useSelector(state => state.authReducer.isAuth);
     const dispatch = useDispatch();
-    
+
 
 
     const updateProfileStatus = (status) => dispatch(updateStatus(status))
@@ -25,9 +26,9 @@ function Profile(props) {
         dispatch(setStatus(id))
     }, [id, dispatch])
     
-    if (!isAuth) {
-        return <Navigate to="/login"/>
-    } 
+    // if (!isAuth) {
+    //     return <Navigate to="/login"/>
+    // } 
 
     return (
         <div className="profile p-3">

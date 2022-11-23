@@ -13,17 +13,17 @@ function ProfileStatus(props) {
     const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(props.status)
     let { id } = useParams()
-
     let submitStatus = () => {
         setEditMode(false);
         setStatus(statusInput.current.value)
     }
 
     useEffect(() => {
-        if (id === 26790) {
+        if (id === "26790") {
             props.updateStatus(status)
         }
-    }, [status, props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [status])
 
 
     return (
