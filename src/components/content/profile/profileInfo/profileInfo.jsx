@@ -6,6 +6,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Spinner from "react-bootstrap/esm/Spinner";
 import './profileInfo.scss';
 
+import ProfileStatus from "./profileStatus";
+
 
 function ProfileInfo(props) {
 
@@ -29,6 +31,7 @@ function ProfileInfo(props) {
                     </Col>
                     <Col className="info">
                         <ListGroup>
+                            <ProfileStatus status="status" />
                             <ListGroup.Item>About: <strong>{props.profile.aboutMe}</strong></ListGroup.Item>
                             <ListGroup.Item>vk:  <a href={props.profile.contacts.vk} rel="noreferrer" target="_blank">{props.profile.contacts.vk}</a></ListGroup.Item>
                             <ListGroup.Item>instagram: {props.profile.contacts.instagram}</ListGroup.Item>

@@ -13,15 +13,6 @@ import {
 
 
 function Dialogs(props) {
-    // let dialogsData = [
-    //     { id:1 , name:"Dimych" },
-    //     { id:2 , name:"Andrey" },
-    //     { id:3 , name:"Sveta" },
-    //     { id:4 , name:"Sasha" },
-    //     { id:5 , name:"Viktor" },
-    //     { id:6 , name:"Valera" },];
-
-
     let dialogLinks = props.data.dialogsList.map(item => <DialogLink id={item.id} name={item.name} key={item.id} />)
     let dialogMessages = props.data.dialogsList.map(item => <Route path={`/${item.id}`} key={item.id}
         element={<DialogMessages

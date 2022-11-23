@@ -2,6 +2,7 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Login from "./components/content/login/login";
 import Header from "./components/header/header";
 import Navigation from "./components/nav/nav";
 import Profile from "./components/content/profile/profile";
@@ -28,6 +29,7 @@ return (
                 <Route path="/dialogs/*" element={<DialogsContainer />} />
                 <Route path="/profile/:id" element={<Profile />} />
                 <Route path="/users" element={<UsersContainer />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
           </div>
         </Container>
