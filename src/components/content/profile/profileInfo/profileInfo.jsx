@@ -31,7 +31,7 @@ function ProfileInfo(props) {
                     </Col>
                     <Col className="info">
                         <ListGroup>
-                            <ProfileStatus status="status" />
+                            <ProfileStatus status={props.status?props.status:"---" }  updateStatus={props.updateStatus}/>
                             <ListGroup.Item>About: <strong>{props.profile.aboutMe}</strong></ListGroup.Item>
                             <ListGroup.Item>vk:  <a href={props.profile.contacts.vk} rel="noreferrer" target="_blank">{props.profile.contacts.vk}</a></ListGroup.Item>
                             <ListGroup.Item>instagram: {props.profile.contacts.instagram}</ListGroup.Item>

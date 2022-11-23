@@ -21,7 +21,7 @@ function DialogMessages(props) {
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Enter message</Form.Label>
-                    <Form.Control autofocus onChange={changeMessage} value={props.newMessageText}></Form.Control>
+                    <Form.Control onChange={changeMessage} value={props.newMessageText}></Form.Control>
                 </Form.Group>
                     <Button onClick={addMessage} className='mb-3' variant='primary'>Send</Button>
             </Form>

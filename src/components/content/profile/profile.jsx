@@ -4,7 +4,7 @@ import ProfileInfo from "./profileInfo/profileInfo";
 import './profile.scss';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../../../redux/profileReducer";
+import { getProfile, setStatus, updateStatus } from "../../../redux/profileReducer";
 import { useParams, Navigate } from "react-router-dom";
 
 
@@ -14,10 +14,15 @@ function Profile(props) {
     const profileState = useSelector(state => state.profileReducer);
     const isAuth = useSelector(state => state.authReducer.isAuth);
     const dispatch = useDispatch();
+    
+
+
+    const updateProfileStatus = (status) => dispatch(updateStatus(status))
 
     let { id } = useParams()
     useEffect(() => {
         dispatch(getProfile(id))
+        dispatch(setStatus(id))
     }, [id, dispatch])
     
     if (!isAuth) {
@@ -26,7 +31,7 @@ function Profile(props) {
 
     return (
         <div className="profile p-3">
-            <ProfileInfo profile={profileState.profile} />
+            <ProfileInfo profile={profileState.profile} updateStatus={updateProfileStatus} status={profileState.status} />
             <MyPostsContainer />
         </div>
     );
