@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,27 +15,48 @@ import {
 } from "react-router-dom";
 
 import "./app.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { initialize } from "./redux/appReducer";
+import Spinner from "react-bootstrap/esm/Spinner";
 
 
 function App(props) {
-return (
-    <div className="App">
-      <Router>
-        <Header />
-        <Container className="d-flex p-0" fluid>
-          <Navigation />
-          <div className="app-content-wrapper m-0 p-0">
+
+  let appState = useSelector(state => state.appReducer)
+
+  let dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(initialize())
+  }, [dispatch])
+
+  if (!appState.initialized) {
+    return (
+      <div className="spinner-body" >
+        <div className="spinner"></div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="App">
+        <Router>
+          <Header />
+          <Container className="d-flex p-0" fluid>
+            <Navigation />
+            <div className="app-content-wrapper m-0 p-0">
               <Routes>
                 <Route path="/dialogs/*" element={<DialogsContainer />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/profile/:id" element={<Profile />} />
                 <Route path="/users" element={<UsersContainer />} />
                 <Route path="/login" element={<Login />} />
               </Routes>
-          </div>
-        </Container>
-      </Router>
-    </div>
-  );
+            </div>
+          </Container>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

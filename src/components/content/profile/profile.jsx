@@ -13,7 +13,8 @@ import { useParams, Navigate } from "react-router-dom";
 function Profile(props) {
 
     const profileState = useSelector(state => state.profileReducer);
-    // const isAuth = useSelector(state => state.authReducer.isAuth);
+    const isAuth = useSelector(state => state.authReducer.isAuth);
+    let autorizedUserId = useSelector(state => state.authReducer.id)
     const dispatch = useDispatch();
 
 
@@ -22,13 +23,17 @@ function Profile(props) {
 
     let { id } = useParams()
     useEffect(() => {
+        if(!id){
+            dispatch(getProfile(autorizedUserId))
+        }
         dispatch(getProfile(id))
+
         dispatch(setStatus(id))
-    }, [id, dispatch])
+    }, [id, dispatch, autorizedUserId])
     
-    // if (!isAuth) {
-    //     return <Navigate to="/login"/>
-    // } 
+    if (!isAuth) {
+        return <Navigate to="/login"/>
+    } 
 
     return (
         <div className="profile p-3">
