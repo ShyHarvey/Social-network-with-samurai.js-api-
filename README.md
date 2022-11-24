@@ -20,6 +20,7 @@
 * Redux
 * React - Redux 
 * React - Bootstrap
+* React - hook - form
 * Redux Thunk
 * React Router v6
 * Axios + Fetch
