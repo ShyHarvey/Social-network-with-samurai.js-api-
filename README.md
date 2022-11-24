@@ -26,4 +26,5 @@
 * Axios + Fetch
 * React Hooks
 * Eslint
+* SCSS
 * CSS-Modules 
