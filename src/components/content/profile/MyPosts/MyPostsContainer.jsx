@@ -5,9 +5,10 @@ import{changeNewPostTextActionCreator,addPostActionCreator} from '../../../../re
 import {useDispatch, useSelector} from 'react-redux'
 
 function PostsContainer(props) {
-    
+
     const dispatch = useDispatch();
-    let state = useSelector(state => state.profileReducer);
+    let postsData = useSelector(state => state.profileReducer.postsData);
+    let newPostText = useSelector(state => state.profileReducer.newPostText);
     
     let onPostChange = (text) =>{
         dispatch(changeNewPostTextActionCreator(text))
@@ -18,8 +19,8 @@ function PostsContainer(props) {
     } ;
 
     return (
-        <Posts newPostText={state.newPostText} addPost={addPost} onPostChange={onPostChange}  data={state.postsData} />
+        <Posts newPostText={newPostText} addPost={addPost} onPostChange={onPostChange}  data={postsData} />
     )
 
 }
-export default PostsContainer;
+export default React.memo(PostsContainer);

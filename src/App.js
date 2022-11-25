@@ -17,7 +17,7 @@ import {
 import "./app.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { initialize } from "./redux/appReducer";
-import Spinner from "react-bootstrap/esm/Spinner";
+
 
 
 function App(props) {

@@ -25,10 +25,12 @@ function Profile(props) {
     useEffect(() => {
         if(!id){
             dispatch(getProfile(autorizedUserId))
+            dispatch(setStatus(autorizedUserId))
+        } else {
+            dispatch(getProfile(id))
+            dispatch(setStatus(id))
         }
-        dispatch(getProfile(id))
 
-        dispatch(setStatus(id))
     }, [id, dispatch, autorizedUserId])
     
     if (!isAuth) {

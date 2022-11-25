@@ -9,7 +9,7 @@ import "./posts.scss";
 
 
 function Posts(props) {
-
+    console.log("posts")
     let postItems = props.data.map(item => <Post message = {item.message} likesCount={item.likesCount} key={item.id} />)
     
     let onPostChange = (e) =>{

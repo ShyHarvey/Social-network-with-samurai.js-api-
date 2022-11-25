@@ -19,7 +19,7 @@ function ProfileStatus(props) {
     }
 
     useEffect(() => {
-        if (id === "26790") {
+        if (!id) {
             props.updateStatus(status)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,7 +28,7 @@ function ProfileStatus(props) {
 
     return (
         <ListGroup.Item onDoubleClick={() => setEditMode(true)}>
-            {editMode ?
+            {!id? (editMode ?
                 <InputGroup >
                     <Button onClick={() => submitStatus()} variant="secondary" id="button-addon1">
                         Set status
@@ -39,6 +39,8 @@ function ProfileStatus(props) {
                         defaultValue={status}
                     />
                 </InputGroup>
+                :
+                props.status)
                 :
                 props.status
             }
