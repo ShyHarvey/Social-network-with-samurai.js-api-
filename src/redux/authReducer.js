@@ -9,7 +9,7 @@ let initialState = {
     id: null,
     login: null,
     email: null,
-    errorMessage:null,
+    errorMessage: null,
     isAuth: false,
 };
 
@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.userData,
                 isAuth: true,
-                errorMessage:null,
+                errorMessage: null,
             }
         case RESET_USER_DATA:
             return {
@@ -31,12 +31,12 @@ const authReducer = (state = initialState, action) => {
                 login: null,
                 email: null,
                 isAuth: false,
-                errorMessage:null,
+                errorMessage: null,
             }
-            case SET_ERROR:
+        case SET_ERROR:
             return {
                 ...state,
-                errorMessage:action.errorMessage,
+                errorMessage: action.errorMessage,
             }
 
         default:
@@ -46,39 +46,29 @@ const authReducer = (state = initialState, action) => {
 
 
 export const setUserDataAC = (userData) => ({ type: SET_USER_DATA, userData });
-export const resetUserDataAC = () => ({ type: RESET_USER_DATA});
-export const setErrorAC = (errorMessage) => ({ type: SET_ERROR, errorMessage});
+export const resetUserDataAC = () => ({ type: RESET_USER_DATA });
+export const setErrorAC = (errorMessage) => ({ type: SET_ERROR, errorMessage });
 
-export const getUserData = () =>(dispatch) => {
-       return authAPI.getUserData()
-            .then((data) => {
-                if (data.resultCode === 0) {
-                    dispatch(setUserDataAC(data.data))
-                }
-            })
-    };
-export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.logIn(email, password, rememberMe)
-            .then((response) => {
-                if (response.data.messages[0]) {
-                    dispatch(setErrorAC(response.data.messages[0]))
-                }
-                if (response.data.resultCode === 0) {
-                    dispatch(getUserData())
-                }
-            })
+export const getUserData = () => async (dispatch) => {
+    let data = await authAPI.getUserData();
+    if (data.resultCode === 0) {
+        dispatch(setUserDataAC(data.data))
+    }
+};
+export const login = (email, password, rememberMe) => async (dispatch) => {
+    let response = await authAPI.logIn(email, password, rememberMe)
+    if (response.data.messages[0]) {
+        dispatch(setErrorAC(response.data.messages[0]))
+    }
+    if (response.data.resultCode === 0) {
+        dispatch(getUserData())
     }
 };
 
-export const logout = () => {
-    return (dispatch) => {
-        authAPI.logOut()
-            .then((response) => {
-                if (response.data.resultCode === 0) {
-                    dispatch(resetUserDataAC())
-                }
-            })
+export const logout = () => async (dispatch) => {
+    let response = await authAPI.logOut()
+    if (response.data.resultCode === 0) {
+        dispatch(resetUserDataAC())
     }
 };
 

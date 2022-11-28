@@ -9,10 +9,18 @@ import DialogLink from "./dialog/dialog_links/dialogLink";
 import {
     Routes,
     Route,
+    Navigate,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 function Dialogs(props) {
+
+    const isAuth = useSelector(state => state.authReducer.isAuth);
+    if (!isAuth) {
+        return <Navigate to="/login"/>
+    } 
+
     let dialogLinks = props.data.dialogsList.map(item => <DialogLink id={item.id} name={item.name} key={item.id} />)
     let dialogMessages = props.data.dialogsList.map(item => <Route path={`/${item.id}`} key={item.id}
         element={<DialogMessages

@@ -13,9 +13,6 @@ function Navigation() {
     <Nav defaultActiveKey="/home" className="flex-column">
       <NavLink className="nav-link" to="/profile/" >Profile</NavLink>
       <NavLink className="nav-link" to="/dialogs/1" >Dialogs</NavLink>
-      <NavLink className="nav-link" to="/news" >News</NavLink>
-      <NavLink className="nav-link" to="/music" >Music</NavLink>
-      <NavLink className="nav-link" to="/settings">Settings</NavLink>
       <NavLink className="nav-link" to="/users">Find users</NavLink>
     </Nav>
   );

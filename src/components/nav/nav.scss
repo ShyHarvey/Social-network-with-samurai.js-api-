@@ -2,6 +2,7 @@
 .nav{
     background-color: $darkViolet;
     width: 300px;
+    min-height: calc(100vh - 56px);
 }
 .nav-link{
     color: $rosy;

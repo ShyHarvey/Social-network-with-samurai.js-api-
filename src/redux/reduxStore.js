@@ -1,4 +1,5 @@
 import { configureStore, combineReducers, applyMiddleware } from "@reduxjs/toolkit";
+import { composeWithDevTools } from '@redux-devtools/extension';
 import thunkMiddleware from 'redux-thunk';
 
 import profileReducer from './profileReducer';
@@ -17,7 +18,9 @@ let reducers = combineReducers({
 
 let store = configureStore(
     { reducer: reducers },
-    applyMiddleware(thunkMiddleware),
+    composeWithDevTools(
+        applyMiddleware(thunkMiddleware),
+    ),
 );
 window.store = store
 
