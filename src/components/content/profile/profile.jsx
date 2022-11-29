@@ -5,14 +5,14 @@ import './profile.scss';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfile, setStatus, updateStatus } from "../../../redux/profileReducer";
-// eslint-disable-next-line no-unused-vars
 import { useParams, Navigate } from "react-router-dom";
 
 
 
 function Profile(props) {
 
-    const profileState = useSelector(state => state.profileReducer);
+    const profileState = useSelector(state => state.profileReducer.profile);
+    const status = useSelector(state => state.profileReducer.status);
     const isAuth = useSelector(state => state.authReducer.isAuth);
     let autorizedUserId = useSelector(state => state.authReducer.id)
     const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function Profile(props) {
 
     return (
         <div className="profile p-3">
-            <ProfileInfo profile={profileState.profile} updateStatus={updateProfileStatus} status={profileState.status} />
+            <ProfileInfo profile={profileState} isOwner={!id} updateStatus={updateProfileStatus} status={status} />
             <MyPostsContainer />
         </div>
     );

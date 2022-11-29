@@ -2,7 +2,8 @@
 
 .ava{
     width: 200px;
-    height: 200px;
+    min-height: 200px;
+    
 }
 
 .profile{
@@ -10,14 +11,9 @@
     background-color: $rosy;
 }
 
-.profileHead{
-    height: 200px;
-    width: 100%;
-    
-}
 .profileImg{
-       width: 100%;
-       height: 100%;
+       width: 200px;
+       height: 200px;
        object-fit: cover;
        object-position: center;
        border-radius: 5px;
