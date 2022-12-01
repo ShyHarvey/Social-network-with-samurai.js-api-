@@ -1,6 +1,8 @@
 # Social network written in React and using the [free version of SamuraiJs api](https://social-network.samuraijs.com/docs)
 
 ## account for testing:
+Email: free@samuraijs.com
+Password: free
 
 ## Information:
 * I used free version of api so you can use only only 20 post/put/delete requests per hour.
