@@ -8,6 +8,8 @@ import { login } from "../../../redux/authReducer"
 function LoginForm() {
 
     let errorMessage = useSelector(state => state.authReducer.errorMessage)
+    let captchaUrl = useSelector(state => state.authReducer.captchaUrl)
+
     const dispatch = useDispatch()
 
     const {
@@ -17,12 +19,10 @@ function LoginForm() {
             isValid,
         },
         handleSubmit,
-        reset,
     } = useForm({ mode: "onBlur" });
 
     const onSubmit = (data) => {
-        dispatch(login(data.email, data.password, data.rememberMe))
-        reset()
+        dispatch(login(data.email, data.password, data.rememberMe, data.captcha ))
     }
 
     return (
@@ -45,6 +45,15 @@ function LoginForm() {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Remember me" {...register("rememberMe")} />
             </Form.Group>
+            {captchaUrl ?
+                (<Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Captcha</Form.Label>
+                    <div className="">
+                        <img src={captchaUrl} alt="security captcha" />
+                    </div>
+                    <Form.Control type="text" placeholder="enter text from image" {...register('captcha', { required: true })} />
+                </Form.Group>)
+                : null}
             {errorMessage ? <div className="text-danger p-1 my-2">{errorMessage}</div>
                 : null}
             <Button disabled={!isValid} variant="primary" type="submit">

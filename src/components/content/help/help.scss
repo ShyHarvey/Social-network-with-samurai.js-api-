@@ -1,0 +1,9 @@
+@import "../../../colors.scss";
+
+.help{
+    background-color: $rosy;
+    min-height: calc(100vh - 56px);
+}
+.accountForTest{
+    max-width: 250px ;
+}

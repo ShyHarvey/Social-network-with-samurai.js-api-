@@ -20,7 +20,7 @@ function ProfileInfo(props) {
     return (
         <Container fluid>
             <h3>{props.profile.fullName}</h3>
-            <Container fluid className=" d-flex mt-3 p-0">
+            <Container fluid className=" d-flex justify-content-between mt-3 p-0">
                 <Container className="ava p-0 mx-2 ">
                     <img className="profileImg" src={props.profile.photos.large ? props.profile.photos.large
                         : 'https://cdn-icons-png.flaticon.com/512/1946/1946429.png'} alt="avatar" />
@@ -42,10 +42,10 @@ function ProfileInfo(props) {
             <p className="m-0">В поиске работы</p>
             :<p className="m-0">Не ищет работу</p>    
             }</ListGroup.Item>
-            <ListGroup.Item className="p-0"> {props.profile.lookingForAJob ?
-            <p className="m-0">Описание:{props.profile.lookingForAJobDescription}</p>
+             {props.profile.lookingForAJob ?
+            <ListGroup.Item > <p className="m-0">Описание: {props.profile.lookingForAJobDescription}</p></ListGroup.Item>
             :null    
-            }</ListGroup.Item>
+            }
                 {props.isOwner ? <EditProfile /> : null}
             </ListGroup>
         </Container>

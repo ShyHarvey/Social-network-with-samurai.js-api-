@@ -14,6 +14,7 @@ function Navigation() {
       <NavLink className="nav-link" to="/profile/" >Profile</NavLink>
       <NavLink className="nav-link" to="/dialogs/1" >Dialogs</NavLink>
       <NavLink className="nav-link" to="/users">Find users</NavLink>
+      <NavLink className="nav-link" to="/">Help</NavLink>
     </Nav>
   );
 }

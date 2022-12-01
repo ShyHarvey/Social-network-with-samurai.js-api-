@@ -17,6 +17,7 @@ import {
 import "./app.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { initialize } from "./redux/appReducer";
+import Help from "./components/content/help/help";
 
 const DialogsContainer = lazy(() => import("./components/content/dialogs/dialogsContainer"));
 const UsersContainer = lazy(() => import("./components/content/users/usersContainer"));
@@ -52,6 +53,7 @@ function App(props) {
                   <Route path="/profile/:id" element={<Profile />} />
                   <Route path="/users" element={<UsersContainer />} />
                   <Route path="/login" element={<Login />} />
+                  <Route path="/" element={<Help />} />
                 </Routes>
               </Suspense>
             </div>

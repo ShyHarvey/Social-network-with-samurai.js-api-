@@ -27,7 +27,7 @@ function ProfileStatus(props) {
 
 
     return (
-        <ListGroup.Item onDoubleClick={() => setEditMode(true)}>
+        <ListGroup.Item action variant="success" onDoubleClick={() => setEditMode(true)}>
             {!id? (editMode ?
                 <InputGroup >
                     <Button onClick={() => submitStatus()} variant="secondary" id="button-addon1">

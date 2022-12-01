@@ -13,7 +13,7 @@ const AddProfileImage = () => {
     }
 
     return (
-        <Form.Control onChange={onFileSelected} className="fileInput my-1" type="file"></Form.Control>
+        <Form.Control onChange={onFileSelected} className="fileInput mt-2" type="file"></Form.Control>
     )
 }
 
